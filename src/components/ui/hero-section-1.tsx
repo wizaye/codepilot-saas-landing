@@ -1,10 +1,10 @@
-
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, ChevronRight, Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { AnimatedGroup } from '@/components/ui/animated-group'
 import { cn } from '@/lib/utils'
+import { ThemeToggle } from '@/components/ui/theme-toggle'
 
 const transitionVariants = {
     item: {
@@ -303,7 +303,7 @@ const HeroHeader = () => {
                     <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
                         <div className="flex w-full justify-between lg:w-auto">
                             <Link
-                                to="/"
+                                href="/"
                                 aria-label="home"
                                 className="flex items-center space-x-2">
                                 <Logo />
@@ -323,7 +323,7 @@ const HeroHeader = () => {
                                 {menuItems.map((item, index) => (
                                     <li key={index}>
                                         <Link
-                                            to={item.href}
+                                            href={item.href}
                                             className="text-muted-foreground hover:text-accent-foreground block duration-150">
                                             <span>{item.name}</span>
                                         </Link>
@@ -338,7 +338,7 @@ const HeroHeader = () => {
                                     {menuItems.map((item, index) => (
                                         <li key={index}>
                                             <Link
-                                                to={item.href}
+                                                href={item.href}
                                                 className="text-muted-foreground hover:text-accent-foreground block duration-150">
                                                 <span>{item.name}</span>
                                             </Link>
@@ -347,12 +347,13 @@ const HeroHeader = () => {
                                 </ul>
                             </div>
                             <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
+                                <ThemeToggle />
                                 <Button
                                     asChild
                                     variant="outline"
                                     size="sm"
                                     className={cn(isScrolled && 'lg:hidden')}>
-                                    <Link to="#">
+                                    <Link href="#">
                                         <span>Login</span>
                                     </Link>
                                 </Button>
@@ -360,7 +361,7 @@ const HeroHeader = () => {
                                     asChild
                                     size="sm"
                                     className={cn(isScrolled && 'lg:hidden')}>
-                                    <Link to="#">
+                                    <Link href="#">
                                         <span>Sign Up</span>
                                     </Link>
                                 </Button>
@@ -368,7 +369,7 @@ const HeroHeader = () => {
                                     asChild
                                     size="sm"
                                     className={cn(isScrolled ? 'lg:inline-flex' : 'hidden')}>
-                                    <Link to="#">
+                                    <Link href="#">
                                         <span>Get Started</span>
                                     </Link>
                                 </Button>
