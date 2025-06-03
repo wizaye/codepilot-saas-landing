@@ -1,2 +1,2 @@
 
-export { HeroSection } from "@/components/ui/hero-section-2";
+export { HeroSection } from "@/components/ui/hero-section-1";
