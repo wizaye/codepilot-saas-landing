@@ -13,7 +13,9 @@ export default function ContentSection() {
           className="text-center"
         >
           <div className="flex justify-center mb-6">
-            <div className="border py-1 px-4 rounded-lg text-sm">Architecture</div>
+            <div className="inline-flex items-center rounded-lg border bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
+              Architecture
+            </div>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight max-w-3xl mx-auto">
             Model Provider Agnostic Architecture
@@ -76,10 +78,7 @@ export default function ContentSection() {
             </div>
           </div>
           <div className="relative mt-6 sm:mt-0">
-            <div className="absolute -inset-20 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:24px_24px] sm:-inset-40 opacity-20 dark:opacity-10"></div>
-            <div className="absolute -inset-20 bg-gradient-to-b from-background via-transparent to-background sm:-inset-40"></div>
-            <div className="absolute -inset-20 bg-gradient-to-r from-background via-transparent to-background sm:-inset-40"></div>
-            <div className="relative overflow-hidden rounded-lg shadow-lg border border-border bg-card">
+            <div className="relative overflow-hidden rounded-lg border bg-card shadow-sm">
               <div className="p-6">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="font-semibold text-foreground">Model Selection</h3>
