@@ -1,11 +1,25 @@
 
+import { motion } from "motion/react";
+
 export default function ContentSection() {
   return (
     <section className="overflow-hidden py-32 bg-background">
       <div className="mx-auto max-w-5xl space-y-16 px-6">
-        <h2 className="text-foreground relative z-10 max-w-xl text-4xl font-medium lg:text-5xl">
-          Model Provider Agnostic Architecture
-        </h2>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <div className="flex justify-center mb-6">
+            <div className="border py-1 px-4 rounded-lg text-sm">Architecture</div>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight max-w-3xl mx-auto">
+            Model Provider Agnostic Architecture
+          </h2>
+        </motion.div>
+        
         <div className="grid gap-6 sm:grid-cols-2 md:gap-12 lg:gap-24">
           <div className="relative z-10 space-y-4">
             <p className="text-muted-foreground">

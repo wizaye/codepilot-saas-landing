@@ -1,52 +1,56 @@
 
-import { Activity, DraftingCompass, Mail, Zap } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { Button } from "@/components/ui/button";
+import { motion } from "motion/react";
 
 export function CTASection() {
-    return (
-        <section className="py-16 md:py-32">
-            <div className="mx-auto max-w-xl md:max-w-6xl px-6">
-                <div className="grid items-center gap-12 md:grid-cols-2 md:gap-12 lg:grid-cols-5 lg:gap-24">
-                    <div className="lg:col-span-2">
-                        <div className="md:pr-6 lg:pr-0">
-                            <h2 className="text-4xl font-semibold lg:text-5xl">Ready to Get Started?</h2>
-                            <p className="mt-6">Join thousands of businesses that trust our platform to scale their operations and drive growth.</p>
-                        </div>
-                        <ul className="mt-8 divide-y border-y *:flex *:items-center *:gap-3 *:py-3">
-                            <li>
-                                <Mail className="size-5" />
-                                24/7 Customer Support
-                            </li>
-                            <li>
-                                <Zap className="size-5" />
-                                Lightning Fast Setup
-                            </li>
-                            <li>
-                                <Activity className="size-5" />
-                                Real-time Analytics
-                            </li>
-                            <li>
-                                <DraftingCompass className="size-5" />
-                                Expert Consultation
-                            </li>
-                        </ul>
-                        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                            <Button size="lg" className="px-8">
-                                Start Free Trial
-                            </Button>
-                            <Button variant="outline" size="lg" className="px-8">
-                                Schedule Demo
-                            </Button>
-                        </div>
-                    </div>
-                    <div className="border-border/50 relative rounded-3xl border p-3 lg:col-span-3">
-                        <div className="bg-gradient-to-b aspect-76/59 relative rounded-2xl from-zinc-300 to-transparent p-px dark:from-zinc-700">
-                            <img src="https://tailark.com/_next/image?url=%2Fpayments.png&w=3840&q=75" className="hidden rounded-[15px] dark:block" alt="payments illustration dark" width={1207} height={929} />
-                            <img src="https://tailark.com/_next/image?url=%2Fpayments-light.png&w=3840&q=75" className="rounded-[15px] shadow dark:hidden" alt="payments illustration light" width={1207} height={929} />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    )
+  return (
+    <section className="py-32 bg-muted/30">
+      <div className="mx-auto max-w-4xl px-6 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true }}
+          className="flex justify-center mb-6"
+        >
+          <div className="border py-1 px-4 rounded-lg text-sm">Get Started</div>
+        </motion.div>
+        
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true }}
+          className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6"
+        >
+          Ready to transform your workflow?
+        </motion.h2>
+        
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true }}
+          className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto"
+        >
+          Join thousands of developers who are already building the future with our AI-powered platform.
+        </motion.p>
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true }}
+          className="flex flex-col sm:flex-row gap-4 justify-center"
+        >
+          <Button size="lg" className="px-8">
+            Start Building
+          </Button>
+          <Button variant="outline" size="lg" className="px-8">
+            View Documentation
+          </Button>
+        </motion.div>
+      </div>
+    </section>
+  );
 }

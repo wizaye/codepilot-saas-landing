@@ -1,19 +1,29 @@
+
 import { Card, CardContent } from '@/components/ui/card'
 import { Shield, Users } from 'lucide-react'
+import { motion } from 'motion/react'
 
 export function Features() {
     return (
-        <section className="bg-gray-50 py-16 md:py-32 dark:bg-transparent">
+        <section className="bg-muted/30 py-32 dark:bg-transparent">
             <div className="mx-auto max-w-3xl lg:max-w-5xl px-6">
-                {/* Header Section */}
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl lg:text-5xl font-medium mb-6">
-                        Powerful Features for <span className="text-primary">Modern Development</span>
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    viewport={{ once: true }}
+                    className="text-center mb-16"
+                >
+                    <div className="flex justify-center mb-6">
+                        <div className="border py-1 px-4 rounded-lg text-sm">Features</div>
+                    </div>
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
+                        Everything you need to build
                     </h2>
-                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                        Everything you need to build fast, secure, and scalable applications with confidence.
+                    <p className="mt-6 text-muted-foreground text-lg max-w-2xl mx-auto">
+                        Powerful features designed to streamline your development workflow and enhance productivity.
                     </p>
-                </div>
+                </motion.div>
 
                 <div className="relative">
                     <div className="relative z-10 grid grid-cols-6 gap-3">

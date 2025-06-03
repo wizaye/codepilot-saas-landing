@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Github, Twitter, MessageCircle, Globe, Star, Heart } from 'lucide-react';
+import { Github, Twitter, MessageCircle, Globe, Heart } from 'lucide-react';
 
 const communityLinks = [
     { href: "#", label: "GitHub Discussions" },
@@ -45,28 +44,6 @@ export default function Footer() {
     return (
         <footer className="border-t bg-background">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-                {/* Header Section */}
-                <div className="text-center mb-12 lg:mb-16">
-                    <h2 className="text-2xl sm:text-3xl font-bold mb-4">Built with ❤️ by the Open Source Community</h2>
-                    <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto">
-                        Join thousands of developers contributing to our mission of creating beautiful, accessible, and performant web experiences for everyone.
-                    </p>
-                    <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-6 lg:mt-8">
-                        <div className="flex items-center gap-2 text-sm bg-muted px-3 sm:px-4 py-2 rounded-full">
-                            <Star className="h-4 w-4 text-yellow-500" />
-                            <span className="font-medium">2.1k stars</span>
-                        </div>
-                        <div className="flex items-center gap-2 text-sm bg-muted px-3 sm:px-4 py-2 rounded-full">
-                            <Github className="h-4 w-4" />
-                            <span className="font-medium">450+ contributors</span>
-                        </div>
-                        <div className="flex items-center gap-2 text-sm bg-muted px-3 sm:px-4 py-2 rounded-full">
-                            <Heart className="h-4 w-4 text-red-500" />
-                            <span className="font-medium">Open Source</span>
-                        </div>
-                    </div>
-                </div>
-
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
                     {/* Logo and Description */}
                     <div className="sm:col-span-2 lg:col-span-1">
