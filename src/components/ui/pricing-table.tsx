@@ -4,8 +4,7 @@
 import * as React from "react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { CheckIcon, ArrowRightIcon } from "@radix-ui/react-icons"
-import NumberFlow from "@number-flow/react"
+import { Check, ArrowRight } from "lucide-react"
 import { motion } from "motion/react"
 
 export type PlanLevel = "basic" | "pro" | "enterprise" | string
@@ -54,6 +53,15 @@ export function PricingTable({
   const handlePlanSelect = (plan: PlanLevel) => {
     setSelectedPlan(plan)
     onPlanSelect?.(plan)
+  }
+
+  const formatPrice = (price: number) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(price)
   }
 
   return (
@@ -137,15 +145,9 @@ export function PricingTable({
                 <p className="text-muted-foreground text-sm mb-4">{plan.description}</p>
                 
                 <div className="flex items-baseline justify-center gap-1 mb-6">
-                  <NumberFlow
-                    format={{
-                      style: "currency",
-                      currency: "USD",
-                      trailingZeroDisplay: "stripIfInteger",
-                    }}
-                    value={isYearly ? plan.price.yearly : plan.price.monthly}
-                    className="text-3xl font-bold"
-                  />
+                  <span className="text-3xl font-bold">
+                    {formatPrice(isYearly ? plan.price.yearly : plan.price.monthly)}
+                  </span>
                   <span className="text-muted-foreground">
                     /{isYearly ? "year" : "month"}
                   </span>
@@ -196,7 +198,7 @@ export function PricingTable({
                     {plans.map((plan) => (
                       <div key={plan.level} className="w-24 flex justify-center">
                         {shouldShowCheck(feature.included, plan.level) ? (
-                          <CheckIcon className="w-5 h-5 text-green-600" />
+                          <Check className="w-5 h-5 text-green-600" />
                         ) : (
                           <span className="text-muted-foreground">-</span>
                         )}
@@ -218,7 +220,7 @@ export function PricingTable({
         >
           <Button size="lg" className="px-8">
             Get Started with {plans.find((p) => p.level === selectedPlan)?.name}
-            <ArrowRightIcon className="w-4 h-4 ml-2" />
+            <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </motion.div>
       </div>
