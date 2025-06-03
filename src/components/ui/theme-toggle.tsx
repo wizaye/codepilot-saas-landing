@@ -24,10 +24,10 @@ export function ThemeToggle() {
 
   return (
     <Button
-      variant="outline"
+      variant="ghost"
       size="icon"
       onClick={toggleTheme}
-      className="rounded-full"
+      className="hover:bg-accent transition-colors"
     >
       {theme === 'light' ? (
         <Moon className="h-4 w-4" />

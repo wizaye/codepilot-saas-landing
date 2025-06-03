@@ -1,42 +1,31 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Github, Twitter, MessageCircle, Globe, Mail, Phone, MapPin } from 'lucide-react';
+import { Github, Twitter, MessageCircle, Slack } from 'lucide-react';
+import { AwardBadge } from './award-badge';
 
 const productLinks = [
     { href: "#", label: "Features" },
-    { href: "#", label: "Pricing" },
     { href: "#", label: "API Reference" },
     { href: "#", label: "Documentation" },
+    { href: "#", label: "CLI Tool" },
     { href: "#", label: "Integrations" },
-    { href: "#", label: "Security" }
-];
-
-const solutionsLinks = [
-    { href: "#", label: "Enterprise" },
-    { href: "#", label: "Startups" },
-    { href: "#", label: "Developers" },
-    { href: "#", label: "Code Migration" },
-    { href: "#", label: "Custom Models" },
-    { href: "#", label: "Consulting" }
 ];
 
 const resourcesLinks = [
     { href: "#", label: "Documentation" },
-    { href: "#", label: "Help Center" },
-    { href: "#", label: "Blog" },
-    { href: "#", label: "Case Studies" },
-    { href: "#", label: "Webinars" },
-    { href: "#", label: "Status Page" }
+    { href: "#", label: "GitHub" },
+    { href: "#", label: "Community" },
+    { href: "#", label: "Examples" },
+    { href: "#", label: "Changelog" },
 ];
 
 const companyLinks = [
-    { href: "#", label: "About Us" },
-    { href: "#", label: "Careers" },
-    { href: "#", label: "Press Kit" },
-    { href: "#", label: "Partners" },
-    { href: "#", label: "Contact" },
-    { href: "#", label: "Investors" }
+    { href: "#", label: "About" },
+    { href: "#", label: "Blog" },
+    { href: "#", label: "Open Source" },
+    { href: "#", label: "Contributing" },
+    { href: "#", label: "License" },
 ];
 
 const footerLinks = [
@@ -45,29 +34,25 @@ const footerLinks = [
         links: productLinks
     },
     {
-        name: "Solutions",
-        links: solutionsLinks
-    },
-    {
         name: "Resources",
         links: resourcesLinks
     },
     {
-        name: "Company",
+        name: "Community",
         links: companyLinks
     }
 ];
 
 export default function Footer() {
     return (
-        <footer className="bg-background border-t">
+        <footer className="bg-background border-t border-border/40">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Main Footer Content */}
                 <div className="py-16 lg:py-20">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
                         {/* Company Info */}
-                        <div className="lg:col-span-4">
-                            <Link to="/" aria-label="home" className="flex items-center space-x-2 mb-6">
+                        <div className="lg:col-span-5">
+                            <Link to="/" aria-label="home" className="flex items-center space-x-2 mb-8">
                                 <svg 
                                     data-logo="logo" 
                                     xmlns="http://www.w3.org/2000/svg" 
@@ -82,24 +67,18 @@ export default function Footer() {
                                     </g>
                                 </svg>
                             </Link>
-                            <p className="text-muted-foreground mb-8 text-base leading-relaxed max-w-sm">
-                                Automate migrations, SDK upgrades, and repetitive dev tasks so you can focus on building, not babysitting versions.
+                            <p className="text-muted-foreground mb-8 text-base leading-relaxed max-w-lg font-funnel">
+                                Open source tools for automated code migrations and dependency upgrades. 
+                                Join our community of developers building the future of code maintenance.
                             </p>
                             
-                            {/* Contact Info */}
-                            <div className="space-y-3 mb-8">
-                                <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                                    <Mail className="h-4 w-4" />
-                                    <span>hello@codelit.io</span>
-                                </div>
-                                <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                                    <Phone className="h-4 w-4" />
-                                    <span>+1 (555) 123-4567</span>
-                                </div>
-                                <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                                    <MapPin className="h-4 w-4" />
-                                    <span>San Francisco, CA</span>
-                                </div>
+                            {/* Product Hunt Badge */}
+                            <div className="mb-8">
+                                <AwardBadge 
+                                    type="product-of-the-day" 
+                                    place={1} 
+                                    link="https://www.producthunt.com/posts/codelit" 
+                                />
                             </div>
 
                             {/* Social Links */}
@@ -116,25 +95,25 @@ export default function Footer() {
                                     <MessageCircle className="h-5 w-5" />
                                     <span className="sr-only">Discord</span>
                                 </Link>
-                                <Link to="https://example.com" className="text-muted-foreground hover:text-foreground transition-colors p-2 rounded-lg hover:bg-muted">
-                                    <Globe className="h-5 w-5" />
-                                    <span className="sr-only">Website</span>
+                                <Link to="https://slack.com" className="text-muted-foreground hover:text-foreground transition-colors p-2 rounded-lg hover:bg-muted">
+                                    <Slack className="h-5 w-5" />
+                                    <span className="sr-only">Slack</span>
                                 </Link>
                             </div>
                         </div>
 
                         {/* Footer Links */}
-                        <div className="lg:col-span-8">
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                        <div className="lg:col-span-7">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                                 {footerLinks.map((linksGroup, index) => (
                                     <div key={index}>
-                                        <h3 className="font-semibold text-foreground mb-4 text-sm uppercase tracking-wider">{linksGroup.name}</h3>
+                                        <h3 className="font-semibold text-foreground mb-4 text-sm uppercase tracking-wider font-funnel">{linksGroup.name}</h3>
                                         <ul className="space-y-3">
                                             {linksGroup.links.map((link, linkIndex) => (
                                                 <li key={linkIndex}>
                                                     <Link
                                                         to={link.href}
-                                                        className="text-muted-foreground hover:text-foreground transition-colors text-sm"
+                                                        className="text-muted-foreground hover:text-foreground transition-colors text-sm font-funnel"
                                                     >
                                                         {link.label}
                                                     </Link>
@@ -148,39 +127,19 @@ export default function Footer() {
                     </div>
                 </div>
 
-                {/* Newsletter Signup */}
-                <div className="border-t py-12">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                        <div>
-                            <h3 className="text-lg font-semibold text-foreground mb-2">Stay updated</h3>
-                            <p className="text-muted-foreground text-sm">Get the latest updates on new features and AI developments.</p>
-                        </div>
-                        <div className="flex gap-3">
-                            <input
-                                type="email"
-                                placeholder="Enter your email"
-                                className="flex-1 px-4 py-2 text-sm bg-background border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring"
-                            />
-                            <button className="px-6 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors">
-                                Subscribe
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
                 {/* Bottom Section */}
-                <div className="border-t py-6">
+                <div className="border-t border-border/40 py-6">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                        <div className="flex flex-col sm:flex-row items-center gap-4 text-sm text-muted-foreground">
+                        <div className="flex flex-col sm:flex-row items-center gap-4 text-sm text-muted-foreground font-funnel">
                             <span>&copy; 2025 Codelit Inc. All rights reserved.</span>
                             <div className="flex items-center gap-4">
                                 <Link to="#" className="hover:text-foreground transition-colors">Privacy Policy</Link>
-                                <Link to="#" className="hover:text-foreground transition-colors">Terms of Service</Link>
-                                <Link to="#" className="hover:text-foreground transition-colors">Cookie Policy</Link>
+                                <Link to="#" className="hover:text-foreground transition-colors">MIT License</Link>
+                                <Link to="#" className="hover:text-foreground transition-colors">Code of Conduct</Link>
                             </div>
                         </div>
-                        <div className="text-sm text-muted-foreground">
-                            SOC 2 Compliant • GDPR Ready • Enterprise Grade
+                        <div className="text-sm text-muted-foreground font-funnel flex items-center gap-2">
+                            Built with ❤️ using Next.js and Tailwind CSS
                         </div>
                     </div>
                 </div>
