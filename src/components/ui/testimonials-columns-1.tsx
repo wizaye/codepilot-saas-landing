@@ -26,9 +26,9 @@ export const TestimonialsColumn = (props: {
           ...new Array(2).fill(0).map((_, index) => (
             <React.Fragment key={index}>
               {props.testimonials.map(({ text, image, name, role }, i) => (
-                <div className="p-8 rounded-3xl border shadow-lg shadow-primary/10 max-w-xs w-full bg-card" key={i}>
-                  <div className="text-foreground mb-4">{text}</div>
-                  <div className="flex items-center gap-3">
+                <div className="p-10 rounded-3xl border shadow-lg shadow-primary/10 max-w-xs w-full bg-card" key={i}>
+                  <div className="text-foreground">{text}</div>
+                  <div className="flex items-center gap-2 mt-5">
                     <img
                       width={40}
                       height={40}
@@ -37,8 +37,8 @@ export const TestimonialsColumn = (props: {
                       className="h-10 w-10 rounded-full"
                     />
                     <div className="flex flex-col">
-                      <div className="font-semibold tracking-tight leading-5 text-foreground">{name}</div>
-                      <div className="leading-5 text-muted-foreground tracking-tight text-sm">{role}</div>
+                      <div className="font-medium tracking-tight leading-5 text-foreground">{name}</div>
+                      <div className="leading-5 opacity-60 tracking-tight text-muted-foreground">{role}</div>
                     </div>
                   </div>
                 </div>
@@ -123,7 +123,7 @@ const Testimonials = () => {
           viewport={{ once: true }}
           className="flex flex-col items-center justify-center max-w-[540px] mx-auto"
         >
-          <div className="flex justify-center mb-6">
+          <div className="flex justify-center">
             <div className="border py-1 px-4 rounded-lg text-sm">Testimonials</div>
           </div>
 

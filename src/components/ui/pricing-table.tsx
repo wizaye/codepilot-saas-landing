@@ -11,18 +11,18 @@ export type PlanLevel = "basic" | "pro" | "enterprise" | string
 
 export interface PricingFeature {
   name: string
-  included: PlanLevel | "all" | null
+  included: PlanLevel | null
 }
 
 export interface PricingPlan {
   name: string
   level: PlanLevel
-  description: string
   price: {
     monthly: number
     yearly: number
   }
   popular?: boolean
+  description: string
 }
 
 export interface PricingTableProps
@@ -36,44 +36,9 @@ export interface PricingTableProps
   buttonClassName?: string
 }
 
-const defaultFeatures: PricingFeature[] = [
-  { name: "OpenAI GPT-4 Access", included: "basic" },
-  { name: "Basic Migration Tools", included: "basic" },
-  { name: "Community Support", included: "basic" },
-  { name: "Claude & Gemini Models", included: "pro" },
-  { name: "Advanced Migration Analytics", included: "pro" },
-  { name: "Priority Support", included: "pro" },
-  { name: "Custom Model Integration", included: "enterprise" },
-  { name: "On-Premise Deployment", included: "enterprise" },
-  { name: "24/7 Dedicated Support", included: "enterprise" },
-  { name: "Enterprise SLA", included: "enterprise" },
-];
-
-const defaultPlans: PricingPlan[] = [
-  {
-    name: "Basic",
-    level: "basic",
-    description: "Perfect for individual developers",
-    price: { monthly: 29, yearly: 290 },
-  },
-  {
-    name: "Pro",
-    level: "pro", 
-    description: "Best for growing teams",
-    price: { monthly: 99, yearly: 990 },
-    popular: true,
-  },
-  {
-    name: "Enterprise",
-    level: "enterprise",
-    description: "For large organizations",
-    price: { monthly: 299, yearly: 2990 },
-  },
-];
-
 export function PricingTable({
-  features = defaultFeatures,
-  plans = defaultPlans,
+  features,
+  plans,
   onPlanSelect,
   defaultPlan = "pro",
   defaultInterval = "monthly",
@@ -107,16 +72,16 @@ export function PricingTable({
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <div className="flex justify-center mb-6">
             <div className="border py-1 px-4 rounded-lg text-sm">Pricing</div>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
-            Choose Your Migration Plan
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
+            Choose Your AI Model Plan
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Start free, scale as you grow. All plans include our core migration tools.
+            Flexible pricing for every need. Switch between providers and scale as you grow.
           </p>
         </motion.div>
 
@@ -125,15 +90,15 @@ export function PricingTable({
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           viewport={{ once: true }}
-          className="flex justify-center mb-12"
+          className="flex justify-center mb-8"
         >
-          <div className="inline-flex items-center gap-2 text-sm p-1 bg-muted rounded-lg">
+          <div className="inline-flex items-center gap-2 text-sm bg-muted p-1 rounded-lg">
             <button
               type="button"
               onClick={() => setIsYearly(false)}
               className={cn(
-                "px-4 py-2 rounded-md transition-all",
-                !isYearly ? "bg-background shadow-sm" : "text-muted-foreground"
+                "px-4 py-2 rounded-md transition-colors font-medium",
+                !isYearly ? "bg-background shadow-sm" : "text-muted-foreground hover:text-foreground",
               )}
             >
               Monthly
@@ -142,35 +107,34 @@ export function PricingTable({
               type="button"
               onClick={() => setIsYearly(true)}
               className={cn(
-                "px-4 py-2 rounded-md transition-all",
-                isYearly ? "bg-background shadow-sm" : "text-muted-foreground"
+                "px-4 py-2 rounded-md transition-colors font-medium",
+                isYearly ? "bg-background shadow-sm" : "text-muted-foreground hover:text-foreground",
               )}
             >
-              Yearly
-              <span className="ml-2 text-xs bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 px-2 py-0.5 rounded-full">
-                Save 20%
-              </span>
+              Yearly <span className="text-green-600 text-xs ml-1">Save 20%</span>
             </button>
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {plans.map((plan, index) => (
-            <motion.div
-              key={plan.level}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 * index, ease: [0.16, 1, 0.3, 1] }}
-              viewport={{ once: true }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
+        >
+          {plans.map((plan) => (
+            <div
+              key={plan.name}
               className={cn(
-                "relative p-8 rounded-2xl border bg-card transition-all duration-300 hover:shadow-lg",
-                plan.popular && "ring-2 ring-primary border-primary",
-                selectedPlan === plan.level && "ring-2 ring-blue-500"
+                "relative p-6 rounded-2xl border transition-all hover:shadow-lg",
+                selectedPlan === plan.level && "ring-2 ring-primary shadow-lg",
+                plan.popular && "border-primary"
               )}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                  <span className="bg-primary text-primary-foreground text-xs font-medium px-3 py-1 rounded-full">
                     Most Popular
                   </span>
                 </div>
@@ -191,28 +155,28 @@ export function PricingTable({
 
                 <Button
                   onClick={() => handlePlanSelect(plan.level)}
-                  variant={plan.popular ? "default" : "outline"}
-                  className="w-full mb-6"
+                  variant={selectedPlan === plan.level ? "default" : "outline"}
+                  className="w-full"
                 >
-                  Choose {plan.name}
+                  {selectedPlan === plan.level ? "Selected" : "Select Plan"}
                 </Button>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </div>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           viewport={{ once: true }}
-          className="border border-border rounded-xl overflow-hidden"
+          className="border rounded-2xl overflow-hidden bg-card"
         >
           <div className="overflow-x-auto">
-            <div className="min-w-[640px] divide-y divide-border">
-              <div className="flex items-center p-6 bg-muted/50">
-                <div className="flex-1 text-lg font-semibold">Features</div>
-                <div className="flex items-center gap-8 text-sm">
+            <div className="min-w-[640px]">
+              <div className="flex items-center p-6 bg-muted/30 border-b">
+                <div className="flex-1 text-lg font-semibold">Features Comparison</div>
+                <div className="flex items-center gap-8">
                   {plans.map((plan) => (
                     <div key={plan.level} className="w-24 text-center font-semibold">
                       {plan.name}
@@ -220,10 +184,17 @@ export function PricingTable({
                   ))}
                 </div>
               </div>
-              {features.map((feature) => (
-                <div key={feature.name} className="flex items-center p-6">
-                  <div className="flex-1 text-sm font-medium">{feature.name}</div>
-                  <div className="flex items-center gap-8 text-sm">
+              
+              {features.map((feature, index) => (
+                <div
+                  key={feature.name}
+                  className={cn(
+                    "flex items-center p-6 border-b last:border-b-0 transition-colors",
+                    index % 2 === 0 && "bg-muted/10"
+                  )}
+                >
+                  <div className="flex-1 font-medium">{feature.name}</div>
+                  <div className="flex items-center gap-8">
                     {plans.map((plan) => (
                       <div key={plan.level} className="w-24 flex justify-center">
                         {shouldShowCheck(feature.included, plan.level) ? (
@@ -257,15 +228,57 @@ export function PricingTable({
   )
 }
 
-function shouldShowCheck(
-  included: PricingFeature["included"],
-  level: string,
-): boolean {
-  if (included === "all") return true
-  if (included === "enterprise" && level === "enterprise") return true
-  if (included === "pro" && (level === "pro" || level === "enterprise")) return true
-  if (included === "basic" && (level === "basic" || level === "pro" || level === "enterprise")) return true
+function shouldShowCheck(included: PricingFeature["included"], level: string): boolean {
+  if (included === "enterprise") return level === "enterprise"
+  if (included === "pro") return level === "pro" || level === "enterprise"
+  if (included === "basic") return level === "basic" || level === "pro" || level === "enterprise"
   return false
 }
 
-export default PricingTable;
+// Default data for AI model pricing
+const features = [
+  { name: "API Access", included: "basic" },
+  { name: "Community Support", included: "basic" },
+  { name: "Basic Models (GPT-3.5)", included: "basic" },
+  { name: "Advanced Models (GPT-4)", included: "pro" },
+  { name: "Priority Support", included: "pro" },
+  { name: "Custom Fine-tuning", included: "pro" },
+  { name: "Enterprise Models", included: "enterprise" },
+  { name: "Dedicated Support", included: "enterprise" },
+  { name: "SLA Guarantee", included: "enterprise" },
+  { name: "On-premise Deployment", included: "enterprise" },
+];
+
+const plans = [
+  {
+    name: "Basic",
+    level: "basic",
+    price: { monthly: 29, yearly: 290 },
+    description: "Perfect for individuals and small projects",
+  },
+  {
+    name: "Pro",
+    level: "pro",
+    price: { monthly: 99, yearly: 990 },
+    popular: true,
+    description: "Ideal for growing teams and businesses",
+  },
+  {
+    name: "Enterprise",
+    level: "enterprise",
+    price: { monthly: 299, yearly: 2990 },
+    description: "For large organizations with custom needs",
+  },
+];
+
+export default function PricingSection() {
+  return (
+    <PricingTable
+      features={features}
+      plans={plans}
+      defaultPlan="pro"
+      defaultInterval="monthly"
+      onPlanSelect={(plan) => console.log("Selected plan:", plan)}
+    />
+  );
+}

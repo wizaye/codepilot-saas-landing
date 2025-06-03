@@ -1,21 +1,21 @@
 
-import { HeroSection } from "@/components/sections/hero-section";
-import { FeaturesSection } from "@/components/sections/features-section";
-import { ContentSection } from "@/components/sections/content-section";
-import { TestimonialsSection } from "@/components/sections/testimonials-section";
-import { PricingSectionComponent } from "@/components/sections/pricing-section";
-import { CTASection } from "@/components/sections/cta-section";
-import { CommunitySection } from "@/components/sections/community-section";
+import { HeroSection } from "@/components/ui/hero-section-1";
+import { Features } from "@/components/ui/features-8";
+import ContentSection from "@/components/ui/content-section";
+import Testimonials from "@/components/ui/testimonials-columns-1";
+import PricingSection from "@/components/ui/pricing-table";
+import { CTASection } from "@/components/ui/cta-section";
+import { CommunitySection } from "@/components/ui/community-section";
 import Footer from "@/components/ui/footer";
 
 const Index = () => {
   return (
     <div>
       <HeroSection />
-      <FeaturesSection />
+      <Features />
       <ContentSection />
-      <TestimonialsSection />
-      <PricingSectionComponent />
+      <Testimonials />
+      <PricingSection />
       <CTASection />
       <CommunitySection />
       <Footer />
