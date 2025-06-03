@@ -3,14 +3,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Github, Twitter, MessageCircle, Globe, Star, Heart } from 'lucide-react';
 
-const openSourceLinks = [
-    { href: "#", label: "Contribute" },
-    { href: "#", label: "Documentation" },
-    { href: "#", label: "Roadmap" },
-    { href: "#", label: "Changelog" },
-    { href: "#", label: "Issues" }
-];
-
 const communityLinks = [
     { href: "#", label: "GitHub Discussions" },
     { href: "#", label: "Discord Server" },
@@ -36,10 +28,6 @@ const companyLinks = [
 
 const footerLinks = [
     {
-        name: "Open Source",
-        links: openSourceLinks
-    },
-    {
         name: "Community",
         links: communityLinks
     },
@@ -56,32 +44,32 @@ const footerLinks = [
 export default function Footer() {
     return (
         <footer className="border-t bg-background">
-            <div className="max-w-7xl mx-auto px-6 py-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
                 {/* Header Section */}
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl font-bold mb-4">Built with ❤️ by the Open Source Community</h2>
-                    <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                <div className="text-center mb-12 lg:mb-16">
+                    <h2 className="text-2xl sm:text-3xl font-bold mb-4">Built with ❤️ by the Open Source Community</h2>
+                    <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto">
                         Join thousands of developers contributing to our mission of creating beautiful, accessible, and performant web experiences for everyone.
                     </p>
-                    <div className="flex items-center justify-center gap-6 mt-8">
-                        <div className="flex items-center gap-2 text-sm bg-muted px-4 py-2 rounded-full">
+                    <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-6 lg:mt-8">
+                        <div className="flex items-center gap-2 text-sm bg-muted px-3 sm:px-4 py-2 rounded-full">
                             <Star className="h-4 w-4 text-yellow-500" />
                             <span className="font-medium">2.1k stars</span>
                         </div>
-                        <div className="flex items-center gap-2 text-sm bg-muted px-4 py-2 rounded-full">
+                        <div className="flex items-center gap-2 text-sm bg-muted px-3 sm:px-4 py-2 rounded-full">
                             <Github className="h-4 w-4" />
                             <span className="font-medium">450+ contributors</span>
                         </div>
-                        <div className="flex items-center gap-2 text-sm bg-muted px-4 py-2 rounded-full">
+                        <div className="flex items-center gap-2 text-sm bg-muted px-3 sm:px-4 py-2 rounded-full">
                             <Heart className="h-4 w-4 text-red-500" />
                             <span className="font-medium">Open Source</span>
                         </div>
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
                     {/* Logo and Description */}
-                    <div className="lg:col-span-2">
+                    <div className="sm:col-span-2 lg:col-span-1">
                         <Link to="/" aria-label="home" className="flex items-center space-x-2 mb-6">
                             <svg
                                 viewBox="0 0 78 18"
@@ -113,7 +101,7 @@ export default function Footer() {
                                 </defs>
                             </svg>
                         </Link>
-                        <p className="text-muted-foreground mb-6 max-w-md">
+                        <p className="text-muted-foreground mb-6 text-sm sm:text-base">
                             An open-source project dedicated to providing high-quality, accessible components for modern web development. Licensed under MIT.
                         </p>
                         <div className="flex gap-4">
@@ -137,7 +125,7 @@ export default function Footer() {
                     </div>
 
                     {/* Footer Links */}
-                    {footerLinks.slice(0, 3).map((linksGroup, index) => (
+                    {footerLinks.map((linksGroup, index) => (
                         <div key={index}>
                             <h3 className="font-semibold text-foreground mb-4">{linksGroup.name}</h3>
                             <ul className="space-y-3">
@@ -157,12 +145,14 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Section */}
-                <div className="border-t pt-8 mt-16 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                <div className="border-t pt-6 lg:pt-8 mt-12 lg:mt-16 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-sm text-muted-foreground text-center sm:text-left">
                         <span>&copy; 2024 Tailark. All rights reserved.</span>
-                        <Link to="#" className="hover:text-foreground transition-colors">Privacy Policy</Link>
-                        <Link to="#" className="hover:text-foreground transition-colors">Terms of Service</Link>
-                        <Link to="#" className="hover:text-foreground transition-colors">MIT License</Link>
+                        <div className="flex items-center gap-4">
+                            <Link to="#" className="hover:text-foreground transition-colors">Privacy Policy</Link>
+                            <Link to="#" className="hover:text-foreground transition-colors">Terms of Service</Link>
+                            <Link to="#" className="hover:text-foreground transition-colors">MIT License</Link>
+                        </div>
                     </div>
                     <div className="text-sm text-muted-foreground flex items-center gap-1">
                         Made with <Heart className="h-4 w-4 text-red-500" /> for the community

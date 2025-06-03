@@ -1,11 +1,13 @@
 
+import { Button } from "@/components/ui/button";
+
 export function CommunitySection(){
     return (
         <section className="py-32">
             <div className="pb-36">
                 <div className="mx-auto px-6 max-w-5xl">
                     <div className="text-center">
-                        <h2 className="text-3xl font-semibold">Built by the Community <br /> for the Community</h2>
+                        <h2 className="text-3xl font-semibold">Built with ❤️ by the Open Source Community</h2>
                         <p className="mt-6 text-muted-foreground">Join our growing community of developers and creators building the future together.</p>
                     </div>
                     <div className="mt-12 max-w-lg mx-auto flex justify-center flex-wrap gap-3">
@@ -42,6 +44,14 @@ export function CommunitySection(){
                         <a href="https://github.com" target="_blank" title="Community Member" className="relative h-16 w-16 rounded-full overflow-hidden border-2 border-background shadow-lg hover:scale-105 transition-transform">
                             <img alt="Community Member" src="https://randomuser.me/api/portraits/women/1.jpg" loading="lazy" className="h-full w-full object-cover" />
                         </a>
+                    </div>
+                    <div className="mt-12 flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
+                        <Button asChild className="flex-1">
+                            <a href="#" target="_blank">Contribute</a>
+                        </Button>
+                        <Button variant="outline" asChild className="flex-1">
+                            <a href="#" target="_blank">Documentation</a>
+                        </Button>
                     </div>
                 </div>
             </div>
