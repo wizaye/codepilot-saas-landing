@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Github, Twitter, MessageCircle, Slack } from 'lucide-react';
 import { AwardBadge } from './award-badge';
+import { Marquee } from './marquee';
 
 const productLinks = [
     { href: "#", label: "Features" },
@@ -134,32 +135,20 @@ export default function Footer() {
                             <span>&copy; 2025 Codepilot Inc. All rights reserved.</span>
                         </div>
                         <div className="text-sm text-muted-foreground font-funnel flex items-center gap-2">
-                            Built with ❤️ using Next.js and Tailwind CSS
+                            Built with ❤️ using React and Tailwind CSS
                         </div>
-                    </div>
-                </div>
-
-                {/* Marquee Section */}
-                <div className="border-t border-border/40 overflow-hidden py-4">
-                    <div className="flex animate-marquee whitespace-nowrap">
-                        {Array.from({ length: 20 }).map((_, i) => (
-                            <span key={i} className="mx-8 text-lg font-bold text-muted-foreground/50 font-funnel">
-                                Codepilot
-                            </span>
-                        ))}
                     </div>
                 </div>
             </div>
 
-            <style jsx>{`
-                @keyframes marquee {
-                    0% { transform: translateX(0%) }
-                    100% { transform: translateX(-100%) }
-                }
-                .animate-marquee {
-                    animation: marquee 25s linear infinite;
-                }
-            `}</style>
+            {/* Marquee Section */}
+            <Marquee 
+                text="Codepilot" 
+                fontSize="sm" 
+                repeat={8} 
+                duration={30} 
+                className="py-8" 
+            />
         </footer>
     );
 }
