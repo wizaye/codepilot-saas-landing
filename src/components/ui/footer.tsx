@@ -131,19 +131,35 @@ export default function Footer() {
                 <div className="border-t border-border/40 py-6">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                         <div className="flex flex-col sm:flex-row items-center gap-4 text-sm text-muted-foreground font-funnel">
-                            <span>&copy; 2025 Codelit Inc. All rights reserved.</span>
-                            <div className="flex items-center gap-4">
-                                <Link to="#" className="hover:text-foreground transition-colors">Privacy Policy</Link>
-                                <Link to="#" className="hover:text-foreground transition-colors">MIT License</Link>
-                                <Link to="#" className="hover:text-foreground transition-colors">Code of Conduct</Link>
-                            </div>
+                            <span>&copy; 2025 Codepilot Inc. All rights reserved.</span>
                         </div>
                         <div className="text-sm text-muted-foreground font-funnel flex items-center gap-2">
                             Built with ❤️ using Next.js and Tailwind CSS
                         </div>
                     </div>
                 </div>
+
+                {/* Marquee Section */}
+                <div className="border-t border-border/40 overflow-hidden py-4">
+                    <div className="flex animate-marquee whitespace-nowrap">
+                        {Array.from({ length: 20 }).map((_, i) => (
+                            <span key={i} className="mx-8 text-lg font-bold text-muted-foreground/50 font-funnel">
+                                Codepilot
+                            </span>
+                        ))}
+                    </div>
+                </div>
             </div>
+
+            <style jsx>{`
+                @keyframes marquee {
+                    0% { transform: translateX(0%) }
+                    100% { transform: translateX(-100%) }
+                }
+                .animate-marquee {
+                    animation: marquee 25s linear infinite;
+                }
+            `}</style>
         </footer>
     );
 }
