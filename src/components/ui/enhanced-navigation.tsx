@@ -18,6 +18,12 @@ export function EnhancedNavigation() {
   const [isOpen, setIsOpen] = useState(false)
 
   const scrollToSection = (href: string) => {
+    if (href === "#docs" || href === "#blog") {
+      // For docs and blog, you can redirect to actual pages
+      console.log(`Navigate to ${href}`)
+      return
+    }
+    
     const element = document.querySelector(href)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })

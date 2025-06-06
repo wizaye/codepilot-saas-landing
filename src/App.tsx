@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { EnhancedNavigation } from "@/components/ui/enhanced-navigation";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import React from "react";
@@ -15,6 +16,7 @@ const App = () => (
     <BrowserRouter>
       <TooltipProvider delayDuration={300}>
         <div className="overflow-x-hidden min-h-screen w-full">
+          <EnhancedNavigation />
           <Toaster />
           <Sonner />
           <Routes>

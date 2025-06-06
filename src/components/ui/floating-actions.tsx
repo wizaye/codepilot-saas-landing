@@ -26,7 +26,7 @@ export function FloatingActions() {
 
   return (
     <>
-      <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2">
+      <div className="fixed bottom-4 right-4 z-[60] flex flex-col gap-2">
         <AnimatePresence>
           {showBackToTop && (
             <motion.div
@@ -69,7 +69,7 @@ export function FloatingActions() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 100 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed bottom-20 right-4 z-40"
+            className="fixed bottom-20 right-4 z-[55]"
           >
             <SystemMonitor />
           </motion.div>

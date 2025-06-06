@@ -9,13 +9,11 @@ import { PricingSection } from "@/sections/pricing-section";
 import { CTASection } from "@/sections/cta-section";
 import { CommunitySection } from "@/sections/community-section";
 import { Footer } from "@/sections/footer-section";
-import { EnhancedNavigation } from "@/components/ui/enhanced-navigation";
 import { FloatingActions } from "@/components/ui/floating-actions";
 
 const Index = () => {
   return (
     <div className="font-funnel overflow-x-hidden w-full">
-      <EnhancedNavigation />
       <HeroSection />
       <section id="features" className="section-spacing">
         <Features />
