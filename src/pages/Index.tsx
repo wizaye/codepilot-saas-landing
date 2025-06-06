@@ -1,5 +1,5 @@
 
-import { HeroSection } from "@/sections/hero-section";
+import { HeroSection, LogoCloud } from "@/sections/hero-section";
 import { Features } from "@/sections/features-section";
 import { ContentSection } from "@/sections/content-section";
 import { MetricsSection } from "@/sections/metrics-section";
@@ -15,6 +15,7 @@ const Index = () => {
   return (
     <div className="font-funnel overflow-x-hidden w-full">
       <HeroSection />
+      <LogoCloud />
       <section id="features" className="section-spacing">
         <Features />
       </section>
