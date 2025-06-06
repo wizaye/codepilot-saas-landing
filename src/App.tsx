@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import SystemMonitor from "./components/ui/system-monitor";
 import React from "react";
 
 const queryClient = new QueryClient();
@@ -14,12 +15,15 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <BrowserRouter>
       <TooltipProvider delayDuration={300}>
-        <Toaster />
-        <Sonner />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <div className="overflow-x-hidden min-h-screen w-full">
+          <Toaster />
+          <Sonner />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <SystemMonitor />
+        </div>
       </TooltipProvider>
     </BrowserRouter>
   </QueryClientProvider>

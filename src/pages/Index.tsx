@@ -12,7 +12,7 @@ import { Footer } from "@/sections/footer-section";
 
 const Index = () => {
   return (
-    <div className="font-funnel">
+    <div className="font-funnel overflow-x-hidden w-full">
       <HeroSection />
       <Features />
       <ContentSection />
