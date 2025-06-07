@@ -5,7 +5,7 @@ import { motion } from 'motion/react'
 
 export function Features() {
     return (
-        <section className="bg-muted/30 py-32 dark:bg-transparent">
+        <section className="py-32">
             <div className="mx-auto max-w-3xl lg:max-w-5xl px-6">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

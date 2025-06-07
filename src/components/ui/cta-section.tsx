@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 
 export function CTASection() {
   return (
-    <section className="py-32 bg-muted/30">
+    <section className="py-32">
       <div className="mx-auto max-w-4xl px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

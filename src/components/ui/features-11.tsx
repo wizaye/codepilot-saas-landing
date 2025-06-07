@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 
 export function Features() {
     return (
-        <section className="dark:bg-muted/25 bg-zinc-50 py-16 md:py-32 font-funnel">
+        <section className="py-16 md:py-32 font-funnel">
             <div className="mx-auto max-w-5xl px-6">
                 {/* Header */}
                 <motion.div
