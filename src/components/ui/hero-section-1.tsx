@@ -1,6 +1,7 @@
+
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Menu, X } from 'lucide-react'
+import { ArrowRight, ChevronRight, Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { AnimatedGroup } from '@/components/ui/animated-group'
 import { cn } from '@/lib/utils'
@@ -82,7 +83,7 @@ export function HeroSection() {
                             <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
                                 <AnimatedGroup variants={transitionVariants}>
                                     <Link
-                                        to="#features"
+                                        to="#link"
                                         className="hover:bg-background dark:hover:border-t-border bg-muted group mx-auto flex w-fit items-center gap-4 rounded-full border p-1 pl-4 shadow-md shadow-black/5 transition-all duration-300 dark:border-t-white/5 dark:shadow-zinc-950 font-funnel">
                                         <span className="text-foreground text-sm">Introducing Support for AI Models</span>
                                         <span className="dark:border-background block h-4 w-0.5 border-l bg-white dark:bg-zinc-700"></span>
@@ -129,7 +130,7 @@ export function HeroSection() {
                                             asChild
                                             size="lg"
                                             className="rounded-xl px-5 text-base font-funnel">
-                                            <Link to="#pricing">
+                                            <Link to="#link">
                                                 <span className="text-nowrap">Download</span>
                                             </Link>
                                         </Button>
@@ -140,9 +141,9 @@ export function HeroSection() {
                                         size="lg"
                                         variant="ghost"
                                         className="h-10.5 rounded-xl px-5 font-funnel">
-                                        <a href="https://docs.lovable.dev" target="_blank" rel="noopener noreferrer">
+                                        <Link to="#link">
                                             <span className="text-nowrap">Go to docs</span>
-                                        </a>
+                                        </Link>
                                     </Button>
                                 </AnimatedGroup>
                             </div>
@@ -185,16 +186,68 @@ export function HeroSection() {
                         </AnimatedGroup>
                     </div>
                 </section>
+                <section className="bg-background pb-16 pt-16 md:pb-32">
+                    <div className="group relative m-auto max-w-5xl px-6">
+                        <div className="absolute inset-0 z-10 flex scale-95 items-center justify-center opacity-0 duration-500 group-hover:scale-100 group-hover:opacity-100">
+                            <Link
+                                to="/"
+                                className="block text-sm duration-150 hover:opacity-75 font-funnel">
+                                <span>Works with your favourite model providers.</span>
+
+                                <ChevronRight className="ml-1 inline-block size-3" />
+                            </Link>
+                        </div>
+                        <div className="group-hover:blur-xs mx-auto mt-12 grid max-w-2xl grid-cols-4 gap-x-12 gap-y-8 transition-all duration-500 group-hover:opacity-50 sm:gap-x-16 sm:gap-y-14">
+                            <div className="flex">
+                                <img
+                                    className="mx-auto h-8 w-fit dark:invert opacity-70 hover:opacity-100 transition-opacity"
+                                    src="https://img.logo.dev/openai.com?token=pk_J5OZ7CacQmekbGRbXKo2Lw"
+                                    alt="OpenAI Logo"
+                                    height="32"
+                                    width="auto"
+                                />
+                            </div>
+
+                            <div className="flex">
+                                <img
+                                    className="mx-auto h-8 w-fit dark:invert opacity-70 hover:opacity-100 transition-opacity"
+                                    src="https://img.logo.dev/claude.ai?token=pk_J5OZ7CacQmekbGRbXKo2Lw"
+                                    alt="Claude Logo"
+                                    height="32"
+                                    width="auto"
+                                />
+                            </div>
+                            <div className="flex">
+                                <img
+                                    className="mx-auto h-8 w-fit dark:invert opacity-70 hover:opacity-100 transition-opacity"
+                                    src="https://img.logo.dev/mistral.ai?token=pk_J5OZ7CacQmekbGRbXKo2Lw"
+                                    alt="Mistral AI Logo"
+                                    height="32"
+                                    width="auto"
+                                />
+                            </div>
+                            <div className="flex">
+                                <img
+                                    className="mx-auto h-8 w-fit dark:invert opacity-70 hover:opacity-100 transition-opacity"
+                                    src="https://img.logo.dev/grok.com?token=pk_J5OZ7CacQmekbGRbXKo2Lw"
+                                    alt="Grok Logo"
+                                    height="32"
+                                    width="auto"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </main>
         </>
     )
 }
 
 const menuItems = [
-    { name: 'Features', href: '#features' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'Docs', href: 'https://docs.lovable.dev' },
-    { name: 'Blog', href: '#blog' },
+    { name: 'Features', href: '#link' },
+    { name: 'Solution', href: '#link' },
+    { name: 'Pricing', href: '#link' },
+    { name: 'About', href: '#link' },
 ]
 
 const HeroHeader = () => {
@@ -208,20 +261,6 @@ const HeroHeader = () => {
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
-
-    const scrollToSection = (href: string) => {
-        if (href.startsWith('http')) {
-            window.open(href, '_blank', 'noopener,noreferrer')
-            return
-        }
-        
-        const element = document.querySelector(href)
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' })
-        }
-        setMenuState(false)
-    }
-
     return (
         <header>
             <nav
@@ -250,11 +289,11 @@ const HeroHeader = () => {
                             <ul className="flex gap-8 text-sm font-funnel">
                                 {menuItems.map((item, index) => (
                                     <li key={index}>
-                                        <button
-                                            onClick={() => scrollToSection(item.href)}
+                                        <Link
+                                            to={item.href}
                                             className="text-muted-foreground hover:text-accent-foreground block duration-150">
                                             <span>{item.name}</span>
-                                        </button>
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>
@@ -265,11 +304,11 @@ const HeroHeader = () => {
                                 <ul className="space-y-6 text-base font-funnel">
                                     {menuItems.map((item, index) => (
                                         <li key={index}>
-                                            <button
-                                                onClick={() => scrollToSection(item.href)}
+                                            <Link
+                                                to={item.href}
                                                 className="text-muted-foreground hover:text-accent-foreground block duration-150">
                                                 <span>{item.name}</span>
-                                            </button>
+                                            </Link>
                                         </li>
                                     ))}
                                 </ul>
@@ -281,7 +320,7 @@ const HeroHeader = () => {
                                     variant="outline"
                                     size="sm"
                                     className={cn(isScrolled && 'lg:hidden', 'font-funnel')}>
-                                    <Link to="#pricing">
+                                    <Link to="#">
                                         <span>Login</span>
                                     </Link>
                                 </Button>
@@ -289,7 +328,7 @@ const HeroHeader = () => {
                                     asChild
                                     size="sm"
                                     className={cn(isScrolled && 'lg:hidden', 'font-funnel')}>
-                                    <Link to="#pricing">
+                                    <Link to="#">
                                         <span>Sign Up</span>
                                     </Link>
                                 </Button>
@@ -297,7 +336,7 @@ const HeroHeader = () => {
                                     asChild
                                     size="sm"
                                     className={cn(isScrolled ? 'lg:inline-flex' : 'hidden', 'font-funnel')}>
-                                    <Link to="#pricing">
+                                    <Link to="#">
                                         <span>Get Started</span>
                                     </Link>
                                 </Button>
