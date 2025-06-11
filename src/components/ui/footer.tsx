@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Github, Twitter, MessageCircle, Slack } from 'lucide-react';
+import { GitHubLogoIcon, TwitterLogoIcon, DiscordLogoIcon } from '@radix-ui/react-icons';
+import { MessageCircle } from 'lucide-react';
 import { AwardBadge } from './award-badge';
 import { Marquee } from './marquee';
 
@@ -49,11 +50,11 @@ export default function Footer() {
         <footer className="bg-background border-t border-border/40">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Main Footer Content */}
-                <div className="py-16 lg:py-20">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+                <div className="py-20 lg:py-24">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
                         {/* Company Info */}
                         <div className="lg:col-span-5">
-                            <Link to="/" aria-label="home" className="flex items-center space-x-2 mb-8">
+                            <Link to="/" aria-label="home" className="flex items-center space-x-2 mb-10">
                                 <svg 
                                     data-logo="logo" 
                                     xmlns="http://www.w3.org/2000/svg" 
@@ -68,13 +69,13 @@ export default function Footer() {
                                     </g>
                                 </svg>
                             </Link>
-                            <p className="text-muted-foreground mb-8 text-base leading-relaxed max-w-lg font-funnel">
+                            <p className="text-muted-foreground mb-10 text-base leading-relaxed max-w-lg font-funnel">
                                 Open source tools for automated code migrations and dependency upgrades. 
                                 Join our community of developers building the future of code maintenance.
                             </p>
                             
                             {/* Product Hunt Badge */}
-                            <div className="mb-8">
+                            <div className="mb-10">
                                 <AwardBadge 
                                     type="product-of-the-day" 
                                     place={1} 
@@ -84,20 +85,20 @@ export default function Footer() {
 
                             {/* Social Links */}
                             <div className="flex gap-4">
-                                <Link to="https://github.com" className="text-muted-foreground hover:text-foreground transition-colors p-2 rounded-lg hover:bg-muted">
-                                    <Github className="h-5 w-5" />
+                                <Link to="https://github.com" className="text-muted-foreground hover:text-foreground transition-all duration-300 p-3 rounded-xl hover:bg-muted hover:scale-105">
+                                    <GitHubLogoIcon className="h-5 w-5" />
                                     <span className="sr-only">GitHub</span>
                                 </Link>
-                                <Link to="https://twitter.com" className="text-muted-foreground hover:text-foreground transition-colors p-2 rounded-lg hover:bg-muted">
-                                    <Twitter className="h-5 w-5" />
+                                <Link to="https://twitter.com" className="text-muted-foreground hover:text-foreground transition-all duration-300 p-3 rounded-xl hover:bg-muted hover:scale-105">
+                                    <TwitterLogoIcon className="h-5 w-5" />
                                     <span className="sr-only">Twitter</span>
                                 </Link>
-                                <Link to="https://discord.com" className="text-muted-foreground hover:text-foreground transition-colors p-2 rounded-lg hover:bg-muted">
-                                    <MessageCircle className="h-5 w-5" />
+                                <Link to="https://discord.com" className="text-muted-foreground hover:text-foreground transition-all duration-300 p-3 rounded-xl hover:bg-muted hover:scale-105">
+                                    <DiscordLogoIcon className="h-5 w-5" />
                                     <span className="sr-only">Discord</span>
                                 </Link>
-                                <Link to="https://slack.com" className="text-muted-foreground hover:text-foreground transition-colors p-2 rounded-lg hover:bg-muted">
-                                    <Slack className="h-5 w-5" />
+                                <Link to="https://slack.com" className="text-muted-foreground hover:text-foreground transition-all duration-300 p-3 rounded-xl hover:bg-muted hover:scale-105">
+                                    <MessageCircle className="h-5 w-5" />
                                     <span className="sr-only">Slack</span>
                                 </Link>
                             </div>
@@ -105,16 +106,16 @@ export default function Footer() {
 
                         {/* Footer Links */}
                         <div className="lg:col-span-7">
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                                 {footerLinks.map((linksGroup, index) => (
                                     <div key={index}>
-                                        <h3 className="font-semibold text-foreground mb-4 text-sm uppercase tracking-wider font-funnel">{linksGroup.name}</h3>
-                                        <ul className="space-y-3">
+                                        <h3 className="font-semibold text-foreground mb-6 text-sm uppercase tracking-wider font-funnel">{linksGroup.name}</h3>
+                                        <ul className="space-y-4">
                                             {linksGroup.links.map((link, linkIndex) => (
                                                 <li key={linkIndex}>
                                                     <Link
                                                         to={link.href}
-                                                        className="text-muted-foreground hover:text-foreground transition-colors text-sm font-funnel"
+                                                        className="text-muted-foreground hover:text-foreground transition-all duration-300 text-sm font-funnel hover:translate-x-1"
                                                     >
                                                         {link.label}
                                                     </Link>
@@ -129,10 +130,10 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Section */}
-                <div className="border-t border-border/40 py-6">
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                        <div className="flex flex-col sm:flex-row items-center gap-4 text-sm text-muted-foreground font-funnel">
-                            <span>&copy; 2025 Codepilot Inc. All rights reserved.</span>
+                <div className="border-t border-border/40 py-8">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+                        <div className="flex flex-col sm:flex-row items-center gap-6 text-sm text-muted-foreground font-funnel">
+                            <span>&copy; 2025 CodePilot Inc. All rights reserved.</span>
                         </div>
                         <div className="text-sm text-muted-foreground font-funnel flex items-center gap-2">
                             Built with ❤️ using React and Tailwind CSS
@@ -143,7 +144,7 @@ export default function Footer() {
 
             {/* Marquee Section */}
             <Marquee 
-                text="Codepilot" 
+                text="CodePilot" 
                 fontSize="sm" 
                 repeat={8} 
                 duration={30} 
